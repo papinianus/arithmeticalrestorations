@@ -50,6 +50,11 @@ namespace ExtensionMethods
         public static long FindNNthDigitFromRight(this long i, int n = 1) => (i / (int)Pow(10, n - 1)) % 100;
 
         #region 10digits
+        public static bool IsXXXXX0XXXX(this long i)
+        {
+            if (!i.Is10digits()) return false;
+            return i.FindNthDigitFromRight(5) == 0L;
+        }
         public static bool IsXXXX0XXXXX(this long i)
         {
             if (!i.Is10digits()) return false;
