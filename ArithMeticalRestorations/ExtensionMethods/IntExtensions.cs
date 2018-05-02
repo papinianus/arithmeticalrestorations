@@ -157,6 +157,11 @@ namespace ExtensionMethods
         }
         #endregion 5digits
         #region 6digits
+        public static bool IsXXXXX3(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return (i % 10).Is3();
+        }
         public static bool IsXXXX9X(this int i)
         {
             if (!i.Is6digits()) return false;
