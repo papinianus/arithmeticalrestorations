@@ -47,6 +47,11 @@ namespace ExtensionMethods
         public static int FindNNthDigitFromRight(this int i, int n = 1) => (i / (int)Pow(10, n - 1)) % 100;
 
         #region 2digits
+        public static bool IsX7(this int i)
+        {
+            if (!i.Is2digits()) return false;
+            return (i % 10).Is7();
+        }
         public static bool IsX9(this int i)
         {
             if (!i.Is2digits()) return false;
@@ -101,6 +106,11 @@ namespace ExtensionMethods
             if (!i.Is4digits()) return false;
             return (i % 10).Is4();
         }
+        public static bool IsXXX9(this int i)
+        {
+            if (!i.Is4digits()) return false;
+            return (i % 10).Is9();
+        }
         public static bool IsXX1X(this int i)
         {
             if (!i.Is4digits()) return false;
@@ -130,6 +140,11 @@ namespace ExtensionMethods
         {
             if (!i.Is4digits()) return false;
             return ((i / 100) % 10).Is3();
+        }
+        public static bool IsX5XX(this int i)
+        {
+            if (!i.Is4digits()) return false;
+            return ((i / 100) % 10).Is5();
         }
         public static bool IsXX13(this int i)
         {
@@ -164,6 +179,11 @@ namespace ExtensionMethods
         {
             if (!i.Is5digits()) return false;
             return (i % 10).Is4();
+        }
+        public static bool IsXXX7X(this int i)
+        {
+            if (!i.Is5digits()) return false;
+            return ((i / 10) % 10).Is7();
         }
         public static bool IsXX3XX(this int i)
         {
