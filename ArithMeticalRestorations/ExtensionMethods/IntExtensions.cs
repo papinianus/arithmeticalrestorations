@@ -1,4 +1,6 @@
-﻿using static System.Math;
+﻿using System;
+using System.Linq;
+using static System.Math;
 
 namespace ExtensionMethods
 {
@@ -45,6 +47,9 @@ namespace ExtensionMethods
         public static int Find_X4321(this int i) => i.FindNthDigitFromRight(5);
 
         public static int FindNNthDigitFromRight(this int i, int n = 1) => (i / (int)Pow(10, n - 1)) % 100;
+
+        public static bool FullFillFormat(this int i, string format) => i.FullFillFormat(new DigitDescriptor(format));
+        public static bool FullFillFormat(this int i, DigitDescriptor format) => i.IsNdigits(format.Length) && format.Restrictions.All(r => i.FindNthDigitFromRight(r.Key) == r.Value);
 
         #region 2digits
         public static bool IsX1(this int i)
