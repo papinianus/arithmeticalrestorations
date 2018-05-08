@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DigitDescriptor.cs" />
     <Compile Include="Enumerator.cs" />
     <Compile Include="IEnumerableIntExtensions.cs" />
     <Compile Include="LongExtensions.cs" />
