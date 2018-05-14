@@ -52,6 +52,16 @@ namespace ExtensionMethods
         public static bool FullFillFormat(this int i, DigitDescriptor format) => i.IsNdigits(format.Length) && format.Restrictions.All(r => i.FindNthDigitFromRight(r.Key) == r.Value);
 
         #region 2digits
+        public static bool IsX1(this int i)
+        {
+            if (!i.Is2digits()) return false;
+            return (i % 10).Is1();
+        }
+        public static bool IsX6(this int i)
+        {
+            if (!i.Is2digits()) return false;
+            return (i % 10).Is6();
+        }
         public static bool IsX7(this int i)
         {
             if (!i.Is2digits()) return false;
@@ -94,10 +104,25 @@ namespace ExtensionMethods
             if (!i.Is3digits()) return false;
             return ((i / 10) % 10).Is2();
         }
+        public static bool IsX4X(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return ((i / 10) % 10).Is4();
+        }
+        public static bool IsX6X(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return ((i / 10) % 10).Is6();
+        }
         public static bool Is2XX(this int i)
         {
             if (!i.Is3digits()) return false;
             return (i / 100).Is2();
+        }
+        public static bool Is8XX(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i / 100).Is8();
         }
         #endregion 3digits
         #region 4digits
@@ -135,6 +160,11 @@ namespace ExtensionMethods
         {
             if (!i.Is4digits()) return false;
             return ((i / 10) % 10).Is9();
+        }
+        public static bool IsX0XX(this int i)
+        {
+            if (!i.Is4digits()) return false;
+            return ((i / 100) % 10).Is0();
         }
         public static bool IsX1XX(this int i)
         {
@@ -185,10 +215,20 @@ namespace ExtensionMethods
             if (!i.Is5digits()) return false;
             return (i % 10).Is4();
         }
+        public static bool IsXXX3X(this int i)
+        {
+            if (!i.Is5digits()) return false;
+            return ((i / 10) % 10).Is3();
+        }
         public static bool IsXXX7X(this int i)
         {
             if (!i.Is5digits()) return false;
             return ((i / 10) % 10).Is7();
+        }
+        public static bool IsXX2XX(this int i)
+        {
+            if (!i.Is5digits()) return false;
+            return ((i / 100) % 10).Is2();
         }
         public static bool IsXX3XX(this int i)
         {
