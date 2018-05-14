@@ -10,9 +10,11 @@ namespace Q201805
     {
         static void Main(string[] args)
         {
-            Q20180506_107.SolveQ1();
+            //Q20180506_107.SolveQ1();
             //Q20180506_107.SolveQ2();
-            Q20180506_107.SolveQ3();
+            //Q20180506_107.SolveQ3();
+            Q20180513_108.SolveQ3();
+            Console.WriteLine("<");
             Console.ReadKey();
         }
     }
