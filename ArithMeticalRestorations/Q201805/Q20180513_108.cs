@@ -28,7 +28,7 @@ namespace Q201805
                 }
             }
         }
-        internal static void SolveQ2() //197 56 11032
+        internal static void SolveQ2() // 197 56 11032
         {
             foreach (var i in Enumerator.FromOneToNine())
             {
@@ -81,25 +81,28 @@ namespace Q201805
                 }
             }
         }
-        internal static void SolveQ4()
+        internal static void SolveQ4() // 28081 1734 48692454
         {
-            foreach (var i in Enumerator.FromOneToNine())
+            foreach (var first in Enumerator.NumberInNdigits(5).Where(IntExtensions.IsOdd))
             {
-                foreach (var j in Enumerator.FromOneToNine())
+                foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                 {
-                    if (i == j) { continue; }
-                    foreach (var k in Enumerator.FromOneToNine())
+                    if (!(first * j).IsXXX567()) { continue; }
+                    foreach (var l in Enumerator.FromOneToNine())
                     {
-                        if (i == k || j == k) { continue; }
-                        var first = (new[] { i, j, k }).ToDecade();
-                        if (!((int)(first * k)).Is4digits()) { continue; }
-                        if (!((int)(first * j)).Is3digits()) { continue; }
-                        var second = (new[] { j, k, j, k }).ToDecade();
-                        var ans = (int)(first * second);
-                        if (!ans.Is7digits()) { continue; }
-                        var mochi = (int)(new[] { j, k }).ToDecade();
-                        if (ans % 100 != mochi) { continue; }
-                        Console.WriteLine($"{first} {second} {first * second}");
+                        if (!(first * l).IsX123XX()) { continue; }
+                        foreach (var i in Enumerator.FromOneToNine())
+                        {
+                            if (!(first * i).IsXXX8X()) { continue; }
+                            foreach (var k in Enumerator.FromOneToNine())
+                            {
+                                if (!(first * k).IsX4XXX()) { continue; }
+                                var second = (int)(new[] { i, j, k, l }).ToDecade();
+                                var ans = first * second;
+                                if (!ans.IsXXX9XXXX()) { continue; }
+                                Console.WriteLine($"{first} {second} {ans}");
+                            }
+                        }
                     }
                 }
             }
