@@ -107,33 +107,36 @@ namespace Q201805
                 }
             }
         }
-        internal static void SolveQ5()
+        internal static void SolveQ5() // 919622 59115 54363454530
         {
-            foreach (var first in Enumerator.NumberInNdigits(7))
+            foreach (var first in Enumerator.NumberInNdigits(6))
             {
-                foreach (var i in Enumerator.FromOneToNine())
+                foreach (var k in Enumerator.FromOneToNine())
                 {
-                    if(!(first * i).Is16XXXXX()) { continue; }
-                    foreach(var n in Enumerator.FromOneToNine())
+                    if(!(first * k).IsXX9X2X()) { continue; }
+                    foreach(var i in Enumerator.FromOneToNine())
                     {
-                        if (!(first * n).IsXXXXX50()) { continue; }
+                        var lineI = first * i;
+                        if (!lineI.IsXXXXX1X()) { continue; }
                         foreach (var j in Enumerator.FromOneToNine())
                         {
-                            if (!(first * j).IsXX2X7XXX()) { continue; }
-                            foreach (var k in Enumerator.FromOneToNine())
+                            if (!(first * j).IsXXXX5XX()) { continue; }
+                            foreach (var l in Enumerator.FromOneToNine())
                             {
-                                if (!(first * k).IsXXX3X8XX()) { continue; }
-                                foreach (var l in Enumerator.FromOneToNine())
+                                if (!(first * l).IsXXX6XX()) { continue; }
+                                foreach (var m in Enumerator.FromOneToNine())
                                 {
-                                    if (!(first * l).IsXXX4X9X()) { continue; }
-                                    var second = (new int[] { n, 0, l, k, j, i }).ToDecade();
-                                    Console.WriteLine($"{first} {second} {first * second}");
-                                    //foreach (var m in Enumerator.FromOneToNine())
-                                    //{
-                                    //    var second = (new int[] { n, m, l, k, j, i }).ToDecade();
-                                    //    if (!(first * second).Is12digits()) { continue; }
-                                    //    Console.WriteLine($"{first} {second} {first * second}");
-                                    //}
+                                    var lineM = first * m;
+                                    if (!lineM.IsXXX8XXX()) { continue; }
+                                    var second = (new int[] { i, j, k, l, m, }).ToDecade();
+                                    var ans = first * second;
+                                    var diffI = ((int)(ans / 10000) - lineI);
+                                    if (!diffI.IsXXXX3X()) { continue; }
+                                    var diffIJ = ((int)(ans / 1000) - (first * (int)(new int[] { i, j }).ToDecade()));
+                                    if (!diffIJ.IsXXX7XX()) { continue; }
+                                    var diffIJK = ((int)(ans / 100) - (first * (int)(new int[] { i, j, k }).ToDecade()));
+                                    if (!diffIJK.IsXXXX4X()) { continue; }
+                                    Console.WriteLine($"{first} {second} {ans}");
                                 }
                             }
                         }

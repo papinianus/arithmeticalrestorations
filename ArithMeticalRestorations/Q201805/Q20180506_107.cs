@@ -66,38 +66,21 @@ namespace Q201805
         }
         internal static void SolveQ4()
         {
-            foreach (var i in Enumerator.FromOneToNine())
+            foreach (var first in Enumerator.NumberInNdigits(6))
             {
-                foreach (var j in Enumerator.FromZeroToNine())
+                foreach (var k in Enumerator.FromOneToNine())
                 {
-                    if (i == j) { continue; }
-                    foreach (var k in Enumerator.FromZeroToNine())
+                    if (!(first * k).Is879XXX()) { continue; }
+                    foreach (var i in Enumerator.FromOneToNine())
                     {
-                        if (i == k || j == k) { continue; }
-                        var first = (int)(new[] { i, j, 6, k }).ToDecade();
-                        foreach (var m in Enumerator.FromOneToNine())
+                        if (!(first * i).IsXXXX4XX()) { continue; }
+                        foreach (var j in Enumerator.FromOneToNine())
                         {
-                            if (i == m || j == m || k == m) { continue; }
-                            var line2 = first * m;
-                            if(!line2.IsXX4XX()) { continue; }
-                            var o = line2 % 10;
-                            var p = (line2 / 10) % 10;
-                            if (i == o || j == o || k == o || m == o) { continue; }
-                            if (i == p || j == p || k == p || m == p || o == p) { continue; }
-                            foreach (var l in Enumerator.FromOneToNine())
-                            {
-                                if (i == l || j == l || k == l || m == l || o == l || p == l) { continue; }
-                                if(!(first * l).Is4digits()) { continue; }
-                                foreach (var n in Enumerator.FromOneToNine())
-                                {
-                                    if (i == n || j == n || k == n || m == n || o == n || p == n || l == n) { continue; }
-                                    if (!(first * n).Is4digits()) { continue; }
-                                    var second = (int)(new[] { l, m, n }).ToDecade();
-                                    var ans = first * second;
-                                    if(!ans.Is7digits()) { continue; }
-                                    Console.WriteLine($"{first} {second} {ans}");
-                                }
-                            }
+                            if (!(first * j).IsXX6XXXX()) { continue; }
+                            var second = (new int[] { i, 0, j, k }).ToDecade();
+                            var ans = first * second;
+                            if (!ans.IsXXXX012XXX()) { continue; }
+                            Console.WriteLine($"{first} {second} {ans}");
                         }
                     }
                 }
