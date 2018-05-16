@@ -335,6 +335,11 @@ namespace ExtensionMethods
             if (!i.Is6digits()) return false;
             return (i / 1000).IsN(123);
         }
+        public static bool Is879XXX(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return (i / 1000).IsN(879);
+        }
         #endregion 6digits
         #region 7digits
         public static bool IsXXXXXX2(this int i)
@@ -356,6 +361,11 @@ namespace ExtensionMethods
         {
             if (!i.Is7digits()) return false;
             return ((i / 100) % 10).Is1();
+        }
+        public static bool IsXXXX4XX(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            return ((i / 100) % 10).Is4();
         }
         public static bool IsXXXX5XX(this int i)
         {
@@ -398,6 +408,11 @@ namespace ExtensionMethods
         {
             if (!i.Is7digits()) return false;
             return ((i / 100) % 1000).IsN(567);
+        }
+        public static bool IsXX6XXXX(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            return ((i / 10000) % 10).Is6();
         }
         public static bool IsX12XXXX(this int i)
         {
