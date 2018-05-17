@@ -114,6 +114,11 @@ namespace ExtensionMethods
             if (!i.Is3digits()) return false;
             return ((i / 10) % 10).Is2();
         }
+        public static bool IsX22(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i % 100).IsN(22);
+        }
         public static bool IsX4X(this int i)
         {
             if (!i.Is3digits()) return false;
