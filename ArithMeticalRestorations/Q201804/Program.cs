@@ -12,8 +12,12 @@ namespace Q201804
         static void Main(string[] args)
         {
             Console.WriteLine(">");
-            Q20180429_106.SolveQ1();
-            Console.WriteLine(">");
+            //Q20180429_106.SolveQ1();
+            //Q20180429_106.SolveQ2();
+            //Q20180429_106.SolveQ3();
+            //Q20180429_106.SolveQ4();
+            //Q20180429_106.SolveQ5();
+            Console.WriteLine("<");
             Console.ReadKey();
         }
     }
