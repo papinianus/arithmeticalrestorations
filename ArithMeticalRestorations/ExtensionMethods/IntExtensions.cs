@@ -327,7 +327,7 @@ namespace ExtensionMethods
         public static bool IsX3X4XX(this int i)
         {
             if (!i.Is6digits()) return false;
-            if (((i / 100) % 10).Is4()) return false;
+            if (!((i / 100) % 10).Is4()) return false;
             return ((i / 10000) % 10).Is3();
         }
         public static bool Is123XXX(this int i)
@@ -381,7 +381,7 @@ namespace ExtensionMethods
         public static bool IsXXXX7X8(this int i)
         {
             if (!i.Is7digits()) return false;
-            if ((i % 10).Is8()) return false;
+            if (!(i % 10).Is8()) return false;
             return ((i / 100) % 10).Is7();
         }
         public static bool IsXXX4X9X(this int i)
