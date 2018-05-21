@@ -65,6 +65,11 @@ namespace ExtensionMethods
             if (!i.Is10digits()) return false;
             return ((i / 1000L) % 100).IsN(12L);
         }
+        public static bool IsXXXX10XXXX(this long i)
+        {
+            if (!i.Is10digits()) return false;
+            return i.FindNNthDigitFromRight(5) == 10L;
+        }
         public static bool IsXXXX32XXXX(this long i)
         {
             if (!i.Is10digits()) return false;
