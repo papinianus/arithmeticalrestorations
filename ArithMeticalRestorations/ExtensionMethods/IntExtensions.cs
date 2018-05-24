@@ -57,6 +57,11 @@ namespace ExtensionMethods
             if (!i.Is2digits()) return false;
             return (i % 10).Is1();
         }
+        public static bool IsX5(this int i)
+        {
+            if (!i.Is2digits()) return false;
+            return (i % 10).Is5();
+        }
         public static bool IsX6(this int i)
         {
             if (!i.Is2digits()) return false;
@@ -108,6 +113,11 @@ namespace ExtensionMethods
         {
             if (!i.Is3digits()) return false;
             return ((i / 10) % 10).Is1();
+        }
+        public static bool IsX13(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i % 100).IsN(13);
         }
         public static bool IsX2X(this int i)
         {
@@ -215,6 +225,11 @@ namespace ExtensionMethods
         {
             if (!i.Is4digits()) return false;
             return ((i / 100) % 10).Is5();
+        }
+        public static bool IsX6XX(this int i)
+        {
+            if (!i.Is4digits()) return false;
+            return ((i / 100) % 10).Is6();
         }
         public static bool IsX9XX(this int i)
         {
@@ -530,6 +545,11 @@ namespace ExtensionMethods
         public static bool Is8XXX9XX(this int i) => i.Is8XXXXXX() && i.IsXXXX9XX();
         #endregion 7digits
         #region 8digits
+        public static bool IsXXXXXX9X(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find2ndDigit() == 9;
+        }
         public static bool IsXXX3X8XX(this int i)
         {
             if (!i.Is8digits()) return false;
@@ -539,6 +559,11 @@ namespace ExtensionMethods
         {
             if (!i.Is8digits()) return false;
             return i.Find5thDigit() == 5;
+        }
+        public static bool IsXXX6XXXX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find5thDigit() == 6;
         }
         public static bool IsXXX9XXXX(this int i)
         {
@@ -555,6 +580,23 @@ namespace ExtensionMethods
             if (!i.Is8digits()) return false;
             return i.FindNthDigitFromRight(6) == 6 && i.Find3rdDigit() == 9;
         }
+        public static bool Is12345XXX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return (i / 1000).IsN(12345);
+        }
         #endregion 8digits
+        #region 9digits
+        public static bool IsXXXXXX8XX(this int i)
+        {
+            if (!i.Is9digits()) return false;
+            return i.Find3rdDigit() == 8;
+        }
+        public static bool IsXXXXX7XXX(this int i)
+        {
+            if (!i.Is9digits()) return false;
+            return i.Find4thDigit() == 7;
+        }
+        #endregion 9digits
     }
 }
