@@ -93,30 +93,6 @@ namespace Q201805
                 if (!sum.Is7digits()) { continue; }
                 Console.WriteLine($"{first} {second} {sum}");
             }
-
-            foreach (var first in Enumerator.NumberInNdigits(5).Where(IntExtensions.IsOdd))
-            {
-                foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
-                {
-                    if (!(first * j).IsXXX567()) { continue; }
-                    foreach (var l in Enumerator.FromOneToNine())
-                    {
-                        if (!(first * l).IsX123XX()) { continue; }
-                        foreach (var i in Enumerator.FromOneToNine())
-                        {
-                            if (!(first * i).IsXXX8X()) { continue; }
-                            foreach (var k in Enumerator.FromOneToNine())
-                            {
-                                if (!(first * k).IsX4XXX()) { continue; }
-                                var second = (int)(new[] { i, j, k, l }).ToDecade();
-                                var ans = first * second;
-                                if (!ans.IsXXX9XXXX()) { continue; }
-                                Console.WriteLine($"{first} {second} {ans}");
-                            }
-                        }
-                    }
-                }
-            }
         }
         internal static void SolveQ5() // 324562 5688 1846108656
         {
