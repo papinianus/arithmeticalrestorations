@@ -7,63 +7,73 @@ using ExtensionMethods;
 
 namespace Q201803
 {
-    static class Q20180325_101
+    static class Q20180311_100
     {
-        internal static void SolveQ1() //25 13 325
+        internal static void SolveQ1() // 73 7 511
         {
-            foreach (var first in Enumerator.NumberInNdigits(2))
+            foreach (var i in Enumerator.FromOneToNine())
             {
-                foreach (var i in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
+                var first = (int)(new[] { i, 3 }).ToDecade();
+                foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                 {
-                    if(first * i != 25) { continue; }
-                    if(!(first * 3).Is2digits()) { continue; }
-                    var second = (int)(new[] { i, 3 }).ToDecade();
+                    var second = j;
                     var ans = first * second;
-                    if (!ans.Is3digits()) { continue; }
+                    if(!ans.IsX11()) { continue; }
                     Console.WriteLine($"{first} {second} {ans}");
                 }
             }
         }
-        internal static void SolveQ2() // 75 13 975
+        internal static void SolveQ2() // 31 36 1116
         {
-            foreach (var first in Enumerator.NumberInNdigits(2))
+            foreach (var i in Enumerator.FromOneToNine())
             {
-                foreach (var i in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
-                {
-                    if (!(first * i).IsX5()) { continue; }
-                    if (!(first * 3).IsX2X()) { continue; }
-                    var second = (int)(new[] { i, 3 }).ToDecade();
-                    var ans = first * second;
-                    if (!ans.Is3digits()) { continue; }
-                    Console.WriteLine($"{first} {second} {ans}");
-                }
-            }
-        }
-        internal static void SolveQ3() // 913 471 430023
-        {
-            foreach (var first in Enumerator.NumberInNdigits(3))
-            {
+                var first = (int)(new[] { 3, i }).ToDecade();
                 foreach (var k in Enumerator.FromOneToNine())
                 {
-                    if (!(first * k).IsX13()) { continue; }
-                    foreach (var i in Enumerator.FromOneToNine())
+                    if(!(first * k).Is1XX()) { continue; }
+                    foreach (var j in Enumerator.FromOneToNine())
+                    {
+                        if (!(first * j).Is2digits()) { continue; }
+                        var second = (int)(new[] { j, k, }).ToDecade();
+                        var ans = first * second;
+                        if (!ans.IsXX1X()) { continue; }
+                        Console.WriteLine($"{first} {second} {ans}");
+                    }
+                }
+            }
+        }
+        internal static void SolveQ3() // 
+        {
+            foreach (var first in Enumerator.NumberInNdigits(4).Where(IntExtensions.IsOdd))
+            {
+                foreach (var k in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
+                {
+                    if (!(first * k).IsXXX9()) { continue; }
+                    foreach (var i in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                     {
                         var lineI = first * i;
-                        if (!lineI.IsX6XX()) { continue; }
-                        foreach (var j in Enumerator.FromOneToNine())
+                        if (!lineI.IsXXX3()) { continue; }
+                        foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                         {
-                            if (!(first * j).IsXX9X()) { continue; }
-                            var second = (int)(new[] { i, j, k, }).ToDecade();
-                            var ans = first * second;
-                            var diffI = (ans / 100) - lineI;
-                            if (!diffI.IsX4X()) { continue; }
-                            Console.WriteLine($"{first} {second} {ans}");
+                            if (!(first * j).IsXXXX1()) { continue; }
+                            foreach (var l in Enumerator.FromOneToNine())
+                            {
+                                if (!(first * l).IsXXX4X()) { continue; }
+                                foreach (var m in Enumerator.FromOneToNine())
+                                {
+                                    if (!(first * m).Is6XXX()) { continue; }
+                                    var second = (int)(new[] { i, j, k, l, m, }).ToDecade();
+                                    var ans = first * second;
+                                    if(!ans.Is9digits()) { continue; }
+                                    Console.WriteLine($"{first} {second} {ans}");
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-        internal static void SolveQ4() // 12345312 89981 1110843519072
+        internal static void SolveQ4() // 
         {
             foreach (var first in Enumerator.NumberInNdigits(8))
             {
@@ -93,7 +103,7 @@ namespace Q201803
                 }
             }
         }
-        internal static void SolveQ5() // 634954 1037 658447298
+        internal static void SolveQ5() // 
         {
             foreach (var first in Enumerator.NumberInNdigits(6))
             {
