@@ -51,8 +51,7 @@ namespace Q201803
                     if (!(first * k).IsXXX9()) { continue; }
                     foreach (var i in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                     {
-                        var lineI = first * i;
-                        if (!lineI.IsXXX3()) { continue; }
+                        if (!(first * i).IsXXX3()) { continue; }
                         foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                         {
                             if (!(first * j).IsXXXX1()) { continue; }
@@ -73,28 +72,31 @@ namespace Q201803
                 }
             }
         }
-        internal static void SolveQ4() // 
+        internal static void SolveQ4() // 23152 35128 813283456
         {
-            foreach (var first in Enumerator.NumberInNdigits(8))
+            foreach (var first in Enumerator.NumberInNdigits(5))
             {
                 foreach(var m in Enumerator.FromOneToNine())
                 {
-                    if(!(first * m).Is12345XXX()) { continue; }
-                    foreach(var i in Enumerator.FromOneToNine())
+                    if(!(first * m).IsXXX21X()) { continue; }
+                    foreach(var l in Enumerator.FromOneToNine())
                     {
-                        if (!(first * i).IsXXXXXX9X()) { continue; }
-                        foreach (var j in Enumerator.FromOneToNine())
+                        if (!(first * l).IsXX3XX()) { continue; }
+                        foreach (var k in Enumerator.FromOneToNine())
                         {
-                            if (!(first * j).IsXXXXXX8XX()) { continue; }
-                            foreach (var k in Enumerator.FromOneToNine())
+                            if (!(first * k).IsXXX5X()) { continue; }
+                            foreach (var j in Enumerator.FromOneToNine())
                             {
-                                if (!(first * k).IsXXXXX7XXX()) { continue; }
-                                foreach (var l in Enumerator.FromOneToNine())
+                                if (!(first * j).IsXXX7XX()) { continue; }
+                                foreach (var i in Enumerator.FromOneToNine())
                                 {
-                                    if (!(first * l).IsXXX6XXXX()) { continue; }
-                                    var second = (new[] { i, j, k, l, m, }).ToDecade();
+                                    var lineI = first * i;
+                                    if (!lineI.IsX9XXX()) { continue; }
+                                    var second = (int)(new[] { i, j, k, l, m, }).ToDecade();
                                     var ans = first * second;
-                                    if (!ans.IsNdigits(13)) { continue; }
+                                    if (!ans.Is9digits()) { continue; }
+                                    if (!((ans / 10000) - lineI).IsXX8XX()) { continue; }
+                                    if (!((ans / 1000) - (first * (int)(new[]{i, j}).ToDecade())).IsXX6X()) { continue; }
                                     Console.WriteLine($"{first} {second} {ans}");
                                 }
                             }
@@ -103,34 +105,27 @@ namespace Q201803
                 }
             }
         }
-        internal static void SolveQ5() // 
+        internal static void SolveQ5() // 2435271 8319 20259019449
         {
-            foreach (var first in Enumerator.NumberInNdigits(6))
+            foreach (var first in Enumerator.NumberInNdigits(7).Where(IntExtensions.IsOdd))
             {
-                foreach (var k in Enumerator.FromOneToNine())
+                foreach (var j in Enumerator.FromOneToNine().Where(IntExtensions.IsOdd))
                 {
-                    var lineK = first * k;
-                    if(!lineK.Is7digits()) { continue; }
-                    if(!(lineK / 1000).hasSameDigits()) { continue; }
-                    var s = lineK.Find4thDigit();
+                    if(!(first * j).Is7XX5XX3()) { continue; }
                     foreach(var i in Enumerator.FromOneToNine())
                     {
-                        var lineI = first * i;
-                        if (!lineI.Is6digits()) { continue; }
-                        if (lineI.Find1stDigit() != s) { continue; }
-                        if (lineI.Find4thDigit() != s) { continue; }
-                        foreach (var j in Enumerator.FromOneToNine())
+                        if (!(first * i).IsXXX8XX6X()) { continue; }
+                        foreach (var k in Enumerator.FromOneToNine())
                         {
-                            var lineJ = first * j;
-                            if (!lineJ.Is7digits()) { continue; }
-                            if (lineJ.Find4thDigit() != s) { continue; }
-
-                            var second = (new int[] { i, 0, j, k, }).ToDecade();
-                            var ans = first * second;
-                            if(!ans.Is9digits()) { continue; }
-                            if (ans.Find5thDigit() != s) { continue; }
-                            if (ans.FindNthDigitFromRight(6) != s) { continue; }
-                            Console.WriteLine($"{first} {second} {ans}");
+                            if (!(first * k).IsX4XX2XX()) { continue; }
+                            foreach (var l in Enumerator.FromOneToNine())
+                            {
+                                if (!(first * l).IsXXX1XXXX()) { continue; }
+                                var second = (new int[] { i, j, k, l, }).ToDecade();
+                                var ans = first * second;
+                                if (!ans.IsXXXX9XXXXXX()) { continue; }
+                                Console.WriteLine($"{first} {second} {ans}");
+                            }
                         }
                     }
                 }
