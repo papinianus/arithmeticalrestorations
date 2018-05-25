@@ -42,7 +42,7 @@ namespace Q201803
                 }
             }
         }
-        internal static void SolveQ3() // 
+        internal static void SolveQ3() // 1349 79195 106834055
         {
             foreach (var first in Enumerator.NumberInNdigits(4).Where(IntExtensions.IsOdd))
             {
