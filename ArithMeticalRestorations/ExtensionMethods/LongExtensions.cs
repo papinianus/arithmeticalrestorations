@@ -76,5 +76,12 @@ namespace ExtensionMethods
             return i.FindNNthDigitFromRight(5) == 32L;
         }
         #endregion 10digits
+        #region 11digits
+        public static bool IsXXXX9XXXXXX(this long i)
+        {
+            if (!i.Is11digits()) return false;
+            return i.FindNthDigitFromRight(7) == 9L;
+        }
+        #endregion 11digits
     }
 }
