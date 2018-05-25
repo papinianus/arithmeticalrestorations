@@ -51,6 +51,9 @@ namespace ExtensionMethods
         public static bool FullFillFormat(this int i, string format) => i.FullFillFormat(new DigitDescriptor(format));
         public static bool FullFillFormat(this int i, DigitDescriptor format) => i.IsNdigits(format.Length) && format.Restrictions.All(r => i.FindNthDigitFromRight(r.Key) == r.Value);
 
+        public static int digitLength(this int i) => (int)Log10(Abs(i)) + 1;
+        public static bool hasSameDigits(this int i) => Enumerable.Range(1, i.digitLength()).All(x => i.Find1stDigit() == i.FindNthDigitFromRight(x));
+
         #region 2digits
         public static bool IsX1(this int i)
         {
