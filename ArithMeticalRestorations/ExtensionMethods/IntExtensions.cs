@@ -102,6 +102,16 @@ namespace ExtensionMethods
             if (!i.Is3digits()) return false;
             return (i % 10).Is3();
         }
+        public static bool IsXX4(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i % 10).Is4();
+        }
+        public static bool IsXX7(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i % 10).Is7();
+        }
         public static bool IsXX9(this int i)
         {
             if (!i.Is3digits()) return false;
@@ -147,6 +157,11 @@ namespace ExtensionMethods
             if (!i.Is3digits()) return false;
             return ((i / 10) % 10).Is6();
         }
+        public static bool IsX7X(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return ((i / 10) % 10).Is7();
+        }
         public static bool Is1XX(this int i)
         {
             if (!i.Is3digits()) return false;
@@ -157,6 +172,7 @@ namespace ExtensionMethods
             if (!i.Is3digits()) return false;
             return (i / 100).Is2();
         }
+        public static bool Is2X7(this int i) => i.Is2XX() && i.IsXX7();
         public static bool Is20X(this int i)
         {
             if (!i.Is3digits()) return false;
@@ -179,6 +195,11 @@ namespace ExtensionMethods
         }
         #endregion 3digits
         #region 4digits
+        public static bool IsXXX2(this int i)
+        {
+            if (!i.Is4digits()) return false;
+            return (i % 10).Is2();
+        }
         public static bool IsXXX3(this int i)
         {
             if (!i.Is4digits()) return false;
@@ -396,6 +417,11 @@ namespace ExtensionMethods
             if (!i.Is6digits()) return false;
             return (i % 10).Is3();
         }
+        public static bool IsXXXXX6(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return (i % 10).Is6();
+        }
         public static bool IsXXXX2X(this int i)
         {
             if (!i.Is6digits()) return false;
@@ -410,6 +436,11 @@ namespace ExtensionMethods
         {
             if (!i.Is6digits()) return false;
             return ((i / 10) % 10).Is4();
+        }
+        public static bool IsXXXX5X(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return ((i / 10) % 10).Is5();
         }
         public static bool IsXXXX6X(this int i)
         {
@@ -440,6 +471,11 @@ namespace ExtensionMethods
         {
             if (!i.Is6digits()) return false;
             return ((i / 10) % 100).IsN(21);
+        }
+        public static bool IsXXX4XX(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return ((i / 100) % 10).Is4();
         }
         public static bool IsXXX6XX(this int i)
         {
@@ -655,6 +691,11 @@ namespace ExtensionMethods
         public static bool Is8XXX9XX(this int i) => i.Is8XXXXXX() && i.IsXXXX9XX();
         #endregion 7digits
         #region 8digits
+        public static bool IsXXXXXXX9(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find1stDigit() == 9;
+        }
         public static bool IsXXXXXX6X(this int i)
         {
             if (!i.Is8digits()) return false;
@@ -665,11 +706,22 @@ namespace ExtensionMethods
             if (!i.Is8digits()) return false;
             return i.Find2ndDigit() == 9;
         }
+        public static bool IsXXXXX7XX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find3rdDigit() == 7;
+        }
         public static bool IsXXX1XXXX(this int i)
         {
             if (!i.Is8digits()) return false;
             return i.Find5thDigit() == 1;
         }
+        public static bool IsXXX3XXXX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find5thDigit() == 3;
+        }
+        public static bool IsXXX3XXX9(this int i) => i.IsXXX3XXXX() && i.IsXXXXXXX9();
         public static bool IsXXX3X8XX(this int i)
         {
             if (!i.Is8digits()) return false;
@@ -701,10 +753,21 @@ namespace ExtensionMethods
             if (!i.Is8digits()) return false;
             return i.FindNthDigitFromRight(6) == 2 && i.Find4thDigit() == 7;
         }
+        public static bool IsXX24568X(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return ((i / 10) % 100000).IsN(24568);
+        }
         public static bool IsXX6XX9XX(this int i)
         {
             if (!i.Is8digits()) return false;
             return i.FindNthDigitFromRight(6) == 6 && i.Find3rdDigit() == 9;
+        }
+        public static bool IsX1XXX7XX(this int i) => i.IsX1XXXXXX() && i.IsXXXXX7XX();
+        public static bool IsX1XXXXXX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.FindNthDigitFromRight(7) == 1;
         }
         public static bool Is12345XXX(this int i)
         {
@@ -722,6 +785,11 @@ namespace ExtensionMethods
         {
             if (!i.Is9digits()) return false;
             return i.Find4thDigit() == 7;
+        }
+        public static bool IsXXXX789XX(this int i)
+        {
+            if (!i.Is9digits()) return false;
+            return ((i / 100) % 1000).IsN(789);
         }
         #endregion 9digits
     }
