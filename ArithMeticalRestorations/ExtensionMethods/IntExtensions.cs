@@ -60,6 +60,11 @@ namespace ExtensionMethods
             if (!i.Is2digits()) return false;
             return (i % 10).Is1();
         }
+        public static bool IsX3(this int i)
+        {
+            if (!i.Is2digits()) return false;
+            return (i % 10).Is3();
+        }
         public static bool IsX5(this int i)
         {
             if (!i.Is2digits()) return false;
@@ -395,6 +400,11 @@ namespace ExtensionMethods
             if (!i.Is5digits()) return false;
             return ((i / 100) % 10).Is8();
         }
+        public static bool IsXX9XX(this int i)
+        {
+            if (!i.Is5digits()) return false;
+            return ((i / 100) % 10).Is9();
+        }
         public static bool IsX4XXX(this int i)
         {
             if (!i.Is5digits()) return false;
@@ -552,10 +562,20 @@ namespace ExtensionMethods
             if (!i.Is7digits()) return false;
             return (i % 10).Is3();
         }
+        public static bool IsXXXXXX7(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            return (i % 10).Is7();
+        }
         public static bool IsXXXXX1X(this int i)
         {
             if (!i.Is7digits()) return false;
             return ((i / 10) % 10).Is1();
+        }
+        public static bool IsXXXXX6X(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            return ((i / 10) % 10).Is6();
         }
         public static bool IsXXXXX7X(this int i)
         {
@@ -604,6 +624,12 @@ namespace ExtensionMethods
             if (!(i % 10).Is8()) return false;
             return ((i / 100) % 10).Is7();
         }
+        public static bool IsXXX0XXX(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            return ((i / 1000) % 10).Is0();
+        }
+        public static bool IsXXX0XX7(this int i) => i.IsXXX0XXX() && i.IsXXXXXX7();
         public static bool IsXXX2XXX(this int i)
         {
             if (!i.Is7digits()) return false;
@@ -661,6 +687,12 @@ namespace ExtensionMethods
             if (!i.Is7digits()) return false;
             var douze = (i / 10000) % 100;
             return ((i / 10000) % 100).IsN(12);
+        }
+        public static bool IsX1234XX(this int i)
+        {
+            if (!i.Is7digits()) return false;
+            var douze = (i / 10000) % 100;
+            return ((i / 100) % 10000).IsN(1234);
         }
         public static bool IsX78XXXX(this int i)
         {
