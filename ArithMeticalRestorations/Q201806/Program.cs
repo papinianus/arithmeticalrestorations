@@ -14,7 +14,7 @@ namespace Q201806
             //Q20180603_111.SolveQ2();
             //Q20180603_111.SolveQ3();
             //Q20180603_111.SolveQ4();
-            Q20180603_111.SolveQ5();
+            //Q20180603_111.SolveQ5();
             Console.WriteLine("<");
             Console.ReadKey();
         }

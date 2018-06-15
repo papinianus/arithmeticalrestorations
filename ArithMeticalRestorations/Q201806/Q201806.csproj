@@ -44,6 +44,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Q20180624_114.cs" />
+    <Compile Include="Q20180617_113.cs" />
+    <Compile Include="Q20180610_112.cs" />
     <Compile Include="Q20180603_111.cs" />
   </ItemGroup>
   <ItemGroup>
