@@ -50,7 +50,6 @@ namespace ExtensionMethods
 
         public static bool FullFillFormat(this int i, string format) => i.FullFillFormat(new DigitDescriptor(format));
         public static bool FullFillFormat(this int i, DigitDescriptor format) => i.IsNdigits(format.Length) && format.Restrictions.All(r => i.FindNthDigitFromRight(r.Key) == r.Value);
-
         public static int digitLength(this int i) => (int)Log10(Abs(i)) + 1;
         public static bool hasSameDigits(this int i) => Enumerable.Range(1, i.digitLength()).All(x => i.Find1stDigit() == i.FindNthDigitFromRight(x));
 
@@ -117,6 +116,11 @@ namespace ExtensionMethods
         }
         #endregion 2digits
         #region 3digits
+        public static bool IsXX1(this int i)
+        {
+            if (!i.Is3digits()) return false;
+            return (i % 10).Is1();
+        }
         public static bool IsXX2(this int i)
         {
             if (!i.Is3digits()) return false;
@@ -554,6 +558,11 @@ namespace ExtensionMethods
             if (!i.Is6digits()) return false;
             return ((i / 10) % 100).IsN(21);
         }
+        public static bool IsXXX3XX(this int i)
+        {
+            if (!i.Is6digits()) return false;
+            return ((i / 100) % 10).Is3();
+        }
         public static bool IsXXX4XX(this int i)
         {
             if (!i.Is6digits()) return false;
@@ -871,6 +880,11 @@ namespace ExtensionMethods
             if (!i.Is8digits()) return false;
             return i.Find2ndDigit() == 9;
         }
+        public static bool IsXXXXX5XX(this int i)
+        {
+            if (!i.Is8digits()) return false;
+            return i.Find3rdDigit() == 5;
+        }
         public static bool IsXXXXX7XX(this int i)
         {
             if (!i.Is8digits()) return false;
@@ -896,6 +910,7 @@ namespace ExtensionMethods
             if (!i.Is8digits()) return false;
             return i.Find5thDigit() == 3;
         }
+        public static bool IsXXX3X5X9(this int i) => i.IsXXX3XXXX() && i.IsXXXXX5XX() && i.IsXXXXXXX9();
         public static bool IsXXX3XXX9(this int i) => i.IsXXX3XXXX() && i.IsXXXXXXX9();
         public static bool IsXXX3X8XX(this int i)
         {
@@ -986,6 +1001,7 @@ namespace ExtensionMethods
             return i.FindNthDigitFromRight(8) == 1;
         }
         public static bool Is1XX6XXXX(this int i) => i.Is1XXXXXXX() && i.IsXXX6XXXX();
+        public static bool Is1XXX7XXX(this int i) => i.Is1XXXXXXX() && i.IsXXXX7XXX();
         public static bool Is1X5X7XXX(this int i) => i.Is1XXXXXXX() && i.IsXX5XXXXX() && i.IsXXXX7XXX();
         #endregion 8digits
         #region 9digits
