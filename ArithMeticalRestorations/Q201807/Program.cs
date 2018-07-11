@@ -18,7 +18,7 @@ namespace Q201807
             Console.WriteLine("<3");
             //Q20180701_115.SolveQ4();
             Console.WriteLine("<4");
-            Q20180701_115.SolveQ5();
+            //Q20180701_115.SolveQ5();
             Console.WriteLine("<5");
             Console.ReadKey();
         }
